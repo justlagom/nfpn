@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
     # 只有当 主文件夹 有变化时才触发
     paths:
-      - 'nfne/**'
+      - 'nfpn/**'
       - '.github/workflows/build-docker-image.yml'
   workflow_dispatch: # 允许你在网页上手动点击运行
 
@@ -51,9 +51,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           # 关键点：设置上下文为 hugging-face 文件夹
-          context: ./nfne
+          context: ./nfpn
           # Dockerfile 就在在这个文件夹里
-          file: ./nfne/Dockerfile
+          file: ./nfpn/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
